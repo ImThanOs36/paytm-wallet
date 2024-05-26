@@ -33,7 +33,7 @@ export const Signup = () => {
         }} placeholder="123456" label={"Password"} />
         <div className="pt-4">
           <Button onClick={async () => {
-            const response = await axios.post("https://paytm-wallet-teal.vercel.app/user/signup", {
+            const response = await axios.post("https://paytm-wallet-eax4.vercel.app/user/signup", {
               username,
               password,
               firstname,
