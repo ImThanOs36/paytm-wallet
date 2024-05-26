@@ -6,7 +6,8 @@ export default defineConfig({
   server:{
     proxy:{
 
-      '/':"https://paytm-wallet-w3ys.vercel.app"
+      '/user':"https://paytm-wallet-w3ys.vercel.app",
+
     }
   },
   plugins: [react()],
