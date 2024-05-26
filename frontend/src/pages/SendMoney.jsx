@@ -7,6 +7,7 @@ export const SendMoney = () => {
     const id = searchParams.get("id");
     const name = searchParams.get("name");
     const [amount, setAmount] = useState(0);
+    const [status, setStatus]=useState("pending")
 
     return <div className="flex justify-center h-screen bg-gray-100">
         <div className="h-full flex flex-col justify-center">
@@ -41,8 +42,8 @@ export const SendMoney = () => {
                                 placeholder="Enter amount"
                             />
                         </div>
-                        <button onClick={() => {
-                            axios.post("https://paytm-wallet-64m2.onrender.com/account/transfer", {
+                        <button onClick={async() => {
+                          const response =await axios.post("https://paytm-wallet-64m2.onrender.com/account/transfer", {
                                 to: id,
                                 amount
                             }, {
@@ -50,10 +51,13 @@ export const SendMoney = () => {
                                     Authorization: "Bearer " + localStorage.getItem("token")
                                 }
                             })
+                            setStatus(response.data.msg)
+
                         }} className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white">
                             Initiate Transfer
                         </button>
                     </div>
+                        <p>{status}</p>
                 </div>
             </div>
         </div>
