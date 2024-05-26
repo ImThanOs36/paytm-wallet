@@ -11,11 +11,11 @@ export const Users = () => {
 
     useEffect(() => {
         axios.get("https://paytm-wallet-64m2.onrender.com/user/bulk?filter=" + filter,
-         {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
+            {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token")
+                }
             }
-        }
         )
             .then(response => {
                 setUsers(response.data.user)
