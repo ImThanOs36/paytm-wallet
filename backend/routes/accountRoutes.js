@@ -14,7 +14,7 @@ router.get("/balance", authMiddleware, async (req, res) => {
     res.json({
         balance: account.balance
     })
-    console.log(req.userID) 
+    console.log(req.userId)  
 })
 
 
@@ -23,10 +23,11 @@ router.post("/transfer", authMiddleware, async (req, res) => {
     const session = await mongoose.startSession();
 
     session.startTransaction(); 
-    const { amount, to ,userId} = req.body;
+    const { amount, to} = req.body;
+    console.log("in acc rout"+req.userId);
 
 
-    const account = await Account.findOne({ userId:userId }).session(session);
+    const account = await Account.findOne({ userId:req.userId }).session(session);
 
     if (!account || account.balance < amount) {
         await session.abortTransaction();
@@ -45,7 +46,7 @@ router.post("/transfer", authMiddleware, async (req, res) => {
     }
 
 
-    await Account.updateOne({ userId: userId }, { $inc: { balance: -amount } }).session(session);
+    await Account.updateOne({ userId: req.userId }, { $inc: { balance: -amount } }).session(session);
     await Account.updateOne({ userId: to }, { $inc: { balance: amount } }).session(session);
 
     await session.commitTransaction(); 
