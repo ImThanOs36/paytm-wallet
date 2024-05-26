@@ -10,7 +10,7 @@ export const Users = () => {
     const [filter, setFilter] = useState("");
 
     useEffect(() => {
-        axios.get("https://paytm-wallet-w3ys.vercel.app//user/bulk?filter=" + filter,
+        axios.get("https://paytm-wallet-w3ys.vercel.app/user/bulk?filter=" + filter,
          {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")
