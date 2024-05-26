@@ -32,6 +32,7 @@ router.get("/bulk", authMiddleware, async (req, res) => {
             }
         }]
     })
+    
 
     res.json({
         user: users.map(user => ({
