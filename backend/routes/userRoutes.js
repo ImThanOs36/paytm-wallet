@@ -19,7 +19,7 @@ const signinSchema = zod.object({
 
 
 router.get("/bulk", authMiddleware, async (req, res) => {
-    const filter = req.query.filter || "";
+    const filter = req.query.filter || " ";
 
     const users = await User.find({
         $or: [{
