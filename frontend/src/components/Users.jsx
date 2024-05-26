@@ -10,7 +10,7 @@ export const Users = () => {
     const [filter, setFilter] = useState("");
 
     useEffect(() => {
-        axios.get("https://paytm-wallet-64m2.onrender.com/user/bulk?filter=" + filter,
+        axios.get("http://localhost:5000/user/bulk?filter=" + filter,
          {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")
@@ -21,6 +21,7 @@ export const Users = () => {
                 setUsers(response.data.user)
             })
     }, [filter])
+    console.log(localStorage.getItem("token"))
 
     return <>
         <div className="font-bold mt-6 text-lg">
@@ -32,7 +33,7 @@ export const Users = () => {
             }} type="text" placeholder="Search users..." className="w-full px-2 py-1 border rounded border-slate-200"></input>
         </div>
         <div>
-            {users.map(user => <User user={user} />)}
+            {users.map(user => <User key={user._id} user={user} />)}
         </div>
     </>
 }
