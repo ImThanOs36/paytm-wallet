@@ -1,6 +1,7 @@
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from "axios";
 import { useState } from 'react';
+import { Button } from '../components/Button';
 
 export const SendMoney = () => {
     const [searchParams] = useSearchParams();
@@ -8,6 +9,7 @@ export const SendMoney = () => {
     const name = searchParams.get("name");
     const [amount, setAmount] = useState(0);
     const [status, setStatus] = useState("pending")
+    const navigate = useNavigate();
 
     return <div className="flex justify-center h-screen bg-gray-100">
         <div className="h-full flex flex-col justify-center">
@@ -58,6 +60,9 @@ export const SendMoney = () => {
                         </button>
                     </div>
                     <p>{status}</p>
+                    <Button onClick={(e) => {
+                navigate("/dashboard");
+            }} label={"dashboard"} />
                 </div>
             </div>
         </div>
