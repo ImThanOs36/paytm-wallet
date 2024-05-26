@@ -7,7 +7,7 @@ const accountRoutes = require("./routes/accountRoutes")
 const bodyParser = require("body-parser")
  
 app.use(express(),cors({
-    origin:"*",
+    origin:"https://paytm-wallet-2okl.vercel.app",
     methods:["POST","GET","PUT","DELETE"]
 }),bodyParser());
 app.use("/user",userRoutes)
