@@ -78,7 +78,7 @@ router.post("/signup", async (req, res) => {
     user.save()
     res.json({ user: user, token: token })
 })
-router.post("/signin", authMiddleware, async (req, res) => {
+router.post("/signin", async (req, res) => {
     const { success } = signinSchema.safeParse(req.body)
 
     if (!success) {
