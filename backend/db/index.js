@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb+srv://ThanOs:ThanOs36@cluster0.5i1i7is.mongodb.net/paytm-wallet",{ useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://ThanOs:ThanOs36@cluster0.5i1i7is.mongodb.net/paytm-wallet", { useNewUrlParser: true, useUnifiedTopology: true })
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
   },
   lastname: {
     type: String,
-    required: true, 
+    required: true,
     trim: true,
     maxLength: 50,
   },
