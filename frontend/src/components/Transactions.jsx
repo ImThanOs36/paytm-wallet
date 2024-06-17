@@ -10,7 +10,7 @@ function Transactions() {
 
     useEffect(() => {
         async function fetchData() {
-            const Transactions = await axios.get("http://localhost:5000/account/alltransaction", {
+            const Transactions = await axios.get("https://paytm-wallet-64m2.onrender.com/account/alltransaction", {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token")
                 }
