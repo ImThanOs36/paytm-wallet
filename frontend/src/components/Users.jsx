@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Button } from "./Button"
+import Button  from "./ui/Button"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +24,9 @@ export const Users = () => {
     console.log(localStorage.getItem("token"))
 
     return <>
+    <div>
+
+   
         <div className="font-bold mt-6 text-lg">
             Users
         </div>
@@ -34,6 +37,7 @@ export const Users = () => {
         </div>
         <div>
             {users.map(user => <User key={user._id} user={user} />)}
+        </div>
         </div>
     </>
 }
