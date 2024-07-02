@@ -10,7 +10,7 @@ function Transactions() {
 
     useEffect(() => {
         async function fetchData() {
-            const Transactions = await axios.get("https://paytm-wallet-64m2.onrender.com/account/alltransaction", {
+            const Transactions = await axios.get("https://paytm-wallet-gilt.vercel.app/account/alltransaction", {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token")
                 }
@@ -43,7 +43,7 @@ function Transactions() {
                                 <p><strong>To:</strong> {transaction.receiver}</p>
                                 <p><strong>Transaction:</strong> {transaction.transactions}</p>
                                 <p><strong>Transaction:</strong> {new Date(transaction.at).toLocaleString("en-US", { timeZone: 'Asia/Kolkata' })}</p>
-            
+
                                 <hr />
                             </div>
                         ))}
