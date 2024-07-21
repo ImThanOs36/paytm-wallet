@@ -24,23 +24,24 @@ export const Users = () => {
     console.log(localStorage.getItem("token"))
 
     return <>
-        <div className="bg-white rounded-lg relative ">
+        <div className="bg-white rounded-lg relative max-w-md ">
 
 
 
 
             <div className="font-bold mt-6 text-lg ">
-                Users
+                Search User 
             </div>
             <div className="my-2">
                 <input onChange={(e) => {
                     setFilter(e.target.value)
-                }} type="text" placeholder="Search users..." className="w-full px-2 py-1 border rounded border-slate-200"></input>
+                }} type="text" placeholder="Search users..." className="w-full px-2 py-1.5 rounded-lg border "></input>
             </div>
-            <div className="w-full absolute">
-                <div className=" bg-red-500 flex flex-col items-stretch w-full justify-between ">
-                    {users.map(user => <User key={user._id} user={user} />)}
-                </div>
+            <div className="w-full ">
+                {users[0] ?
+                    <div className=" flex flex-col  max-w-sm justify-between absolute -left-0 w-full p-2 rounded-lg bg-white border-2" >
+                        {users.map(user => <User key={user._id} user={user} />)}
+                    </div> : null}
             </div>
         </div>
     </>
@@ -49,14 +50,14 @@ export const Users = () => {
 function User({ user }) {
     const navigate = useNavigate();
 
-    return <div className="flex justify-between">
-        <div className="flex">
-            <div className="rounded-full h-12 w-12 bg-slate-200 flex justify-center mt-1 mr-2">
+    return <div className="flex justify-between  ">
+        <div className="flex gap-3">
+            <div className="rounded-full h-10 w-10 bg-slate-200 flex justify-center mt-1">
                 <div className="flex flex-col justify-center h-full text-xl">
                     {user.firstname[0]}
                 </div>
             </div>
-            <div className="flex flex-col justify-center h-ful">
+            <div className="flex flex-col justify-center h-full">
                 <div>
                     {user.firstname} {user.lastname}
                 </div>
@@ -64,9 +65,9 @@ function User({ user }) {
         </div>
 
         <div className="flex flex-col justify-center h-ful">
-            <Button onClick={(e) => {
+            <button className="bg-black text-white py-1 px-3 rounded-md" onClick={() => {
                 navigate("/send?id=" + user._id + "&name=" + user.firstname);
-            }} label={"Send Money"} />
+            }} >send </button>
         </div>
     </div>
 }

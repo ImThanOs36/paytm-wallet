@@ -8,7 +8,7 @@ export const SendMoney = () => {
     const id = searchParams.get("id");
     const name = searchParams.get("name");
     const [amount, setAmount] = useState(0);
-    const [status, setStatus] = useState("pending")
+    const [status, setStatus] = useState("")
     const navigate = useNavigate();
 
     return <div className="flex justify-center h-screen bg-gray-100">
@@ -18,15 +18,17 @@ export const SendMoney = () => {
             >
                 <div className="flex flex-col space-y-1.5 p-6">
                     <h2 className="text-3xl font-bold text-center">Send Money</h2>
+                    <p className='text-center'>{status}</p>
                 </div>
                 <div className="p-6">
+
                     <div className="flex items-center space-x-4">
                         <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center">
                             <span className="text-2xl text-white">{name[0].toUpperCase()}</span>
                         </div>
-                        <h3 className="text-2xl font-semibold">{name}</h3>
+                        <h3 className="text-2xl font-semibold ">{name}</h3>
                     </div>
-                    <div className="space-y-4">
+                    <div className="space-y-4 mb-4">
                         <div className="space-y-2">
                             <label
                                 className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -45,7 +47,8 @@ export const SendMoney = () => {
                             />
                         </div>
                         <button onClick={async () => {
-                            const response = await axios.post("https://paytm-wallet-64m2.onrender.com/account/transfer", {
+                            setStatus("Pending ...")
+                            const response = await axios.post("https://paytm-wallet-gilt.vercel.app/account/transfer", {
                                 to: id,
                                 amount
                             }, {
@@ -59,10 +62,10 @@ export const SendMoney = () => {
                             Initiate Transfer
                         </button>
                     </div>
-                    <p>{status}</p>
+
                     <Button onClick={(e) => {
-                navigate("/dashboard");
-            }} label={"dashboard"} />
+                        navigate("/dashboard");
+                    }} label={"dashboard"} />
                 </div>
             </div>
         </div>

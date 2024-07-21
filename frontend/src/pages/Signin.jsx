@@ -24,14 +24,14 @@ export const Signin = () => {
         }} placeholder="123456" label={"Password"} />
         <div className="pt-4">
           <Button onClick={async () => {
-            const response = await axios.post("https://paytm-wallet-gilt.vercel.app/user/signin",{
-             username,
+            const response = await axios.post("https://paytm-wallet-gilt.vercel.app/user/signin", {
+              username,
               password
-          }, {
+            }, {
               headers: {
-                  Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: "Bearer " + localStorage.getItem("token")
               }
-          });
+            });
             localStorage.setItem("token", response.data.token)
             navigate("/dashboard")
           }} label={"Sign In"} />

@@ -19,11 +19,11 @@ export const Balance = () => {
 
     }, [balalce])
     return <>
-        <div className="flex">
+        <div className="flex flex-col items-start h-28 p-4 rounded-md border-2 w-full">
             <div className="font-bold text-lg">
-                Your balance
+                Your balance :
             </div>
-            <div className="font-semibold ml-4 text-lg">
+            <div className="font-bold text-4xl">
                 Rs {balalce}
             </div>
         </div>
